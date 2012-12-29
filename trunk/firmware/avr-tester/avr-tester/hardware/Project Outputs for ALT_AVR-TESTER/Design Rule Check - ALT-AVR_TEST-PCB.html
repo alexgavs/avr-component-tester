@@ -1,0 +1,554 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 {
+			font-family : sans-serif;
+			color : white;
+			background-color : #21489e;
+			padding: 0.3em;
+		}
+		body {
+			font-family : verdana;
+		}
+		td, th {
+			padding: 0.5em;
+			text-align : center;
+			width : 18%;
+		}
+		th {
+			background-color : #A6CAF0;
+
+		}
+		th.column1, td.column1 {
+			text-align: left;
+			width : auto;
+		}
+		table {
+			width : 100%;
+		}
+		
+		.DRC_summary_header {							
+			padding-bottom : 0.1em;
+			border : 0px solid black;							
+			width: 100%;
+                        align: right;
+                        
+		}
+
+		.DRC_summary_header_col1, 
+		.DRC_summary_header_col2, 
+		.DRC_summary_header_col3
+		{
+			color : black;
+			font-size:150%;
+                        padding : 0em;
+			padding-top : 0.2em;
+			padding-bottom 0.2: 0em;
+			border : 0px solid black;
+			width : auto;
+			vertical-align: top;
+			font-weight: bold;				
+		}
+		
+		.DRC_summary_header_col1 	
+		{		                       
+			text-align: right;
+                        width: auto;	
+		}
+
+		.DRC_summary_header_col2 	
+		{		
+			text-align: center;	
+		}
+
+		.DRC_summary_header_col3 	
+		{		
+			text-align: left;	
+		}
+
+
+		
+		.header_holder
+		{
+		Width = 100%;
+		border = 0px solid green;
+		padding = 0;
+		}
+		
+		
+		
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+                {
+			left:0;
+			top:0;
+			padding-top : 0.1em;			
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top
+
+		}
+		.front_matter {	
+			
+			margin-top: 5px;
+ 			margin-left: 0px;					 			
+ 			horizontal-align: left;
+		}
+				
+		
+		.front_matter_column1 {
+			width : 10em;	
+			text-align  : right;
+			padding-right:0.1em;
+			
+		}
+		
+		.front_matter_column2 {
+                        width: 0.1em;
+			align: center;
+			text-align : center;
+			margin-right  : 0.1em;	
+			margin-left   : 0.1em;
+		}
+		.front_matter_column3 {
+			width         : auto;  
+			text-align    : left;	
+			margin-right  : 0.5em;				
+		}
+		
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : right;
+		}
+		.warning, .error {
+			color : red;
+			font-weight : bold;
+		}
+		tr.onmouseout_odd {
+			background-color : #EEEEE0 
+		}
+		tr.onmouseout_even { 
+			background-color : #F3F3E3   
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : lightYellow
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #008000 
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}
+	</script><title>Design Rule Verification Report</title>
+</head>
+<body onload=""><img ALT="Altium" src="
+			file://C:\Users\Public\Documents\Altium\AD\Templates\AD-rgb_logo_223x64.gif
+		"><a href="dxpprocess://Client:SetupPreferences?Server=PCB|PageName=Reports" class="customize"><acronym title="dxpprocess://Client:SetupPreferences?Server=PCB|PageName=Reports">customize</acronym></a><h1>Design Rule Verification Report</h1>
+<table class="header_holder">
+<td Style="width:70%">
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date</td>
+<td class="front_matter_column2">:</td>
+<td class="front_matter_column3">08/11/2012</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time</td>
+<td class="front_matter_column2">:</td>
+<td class="front_matter_column3">13:26:21</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time</td>
+<td class="front_matter_column2">:</td>
+<td class="front_matter_column3">00:00:01</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename</td>
+<td class="front_matter_column2">:</td>
+<td class="front_matter_column3"><a href="file:///D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc" class="file"><acronym title="D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc">D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc</acronym></a></td>
+</tr>
+</table>
+</td>
+<td Style="Width:30%">
+<table class="DRC_summary_header">
+<tr>
+<td class="DRC_summary_header_col1">Warnings</td>
+<td class="DRC_summary_header_col2">:</td>
+<td class="DRC_summary_header_col3">0</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Rule Violations</td>
+<td class="DRC_summary_header_col2">:</td>
+<td class="DRC_summary_header_col3" style="color : red">52</td></tr>
+</table>
+</td>
+</table>
+<hr><a name="IDASAITD"><h2>Summary</h2></a><table>
+<tr>
+<th class="column1">Warnings</th>
+<th class="column2">Count</th>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">0</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Rule Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDAEBITD">SMD Neck-Down Constraint (Percent=100%) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDAKBITD">Short-Circuit Constraint (Allowed=No) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDAQBITD">Un-Routed Net Constraint ( (All) )</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDAWBITD">Clearance Constraint (Gap=0.3mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDA2BITD">Power Plane Connect Rule(Relief Connect )(Expansion=0.508mm) (Conductor Width=0.254mm) (Air Gap=0.254mm) (Entries=4) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDACCITD">Width Constraint (Min=0.5mm) (Max=1mm) (Preferred=0.8mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDAICITD">Height Constraint (Min=0mm) (Max=25.4mm) (Prefered=12.7mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDAOCITD">Hole Size Constraint (Min=0.025mm) (Max=2.54mm) (All)</a></td>
+<td class="column2">6</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDAYDITD">Hole To Hole Clearance (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDA4DITD">Minimum Solder Mask Sliver (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDAEEITD">Silkscreen Over Component Pads (Clearance=0.254mm) (All),(All)</a></td>
+<td class="column2">45</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDAFBJTD">Silk to Silk (Clearance=0.254mm) (All),(All)</a></td>
+<td class="column2">1</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDAUBJTD">Net Antennae (Tolerance=0mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDA0BJTD">Width Constraint (Min=0.5mm) (Max=1mm) (Preferred=0.8mm) ((InNet('GND') OR InNet('VCC')))</a></td>
+<td class="column2">0</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">52</td>
+</tr>
+</table><br><hr><a name="IDAOCITD"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Hole Size Constraint (Min=0.025mm) (Max=2.54mm) (All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1908.824mil|Location2.X=2028.184mil|Location1.Y=2499.376mil|Location2.Y=2618.736mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1908.824mil|Location2.X=2028.184mil|Location1.Y=2499.376mil|Location2.Y=2618.736mil|Absolute=True">Hole Size Constraint (3mm &gt; 2.54mm) : Pad Free-0(50mm,65mm)  Multi-Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4861.58mil|Location2.X=4980.94mil|Location1.Y=2499.376mil|Location2.Y=2618.736mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4861.58mil|Location2.X=4980.94mil|Location1.Y=2499.376mil|Location2.Y=2618.736mil|Absolute=True">Hole Size Constraint (3mm &gt; 2.54mm) : Pad Free-0(125mm,65mm)  Multi-Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4861.58mil|Location2.X=4980.94mil|Location1.Y=4625.36mil|Location2.Y=4744.72mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4861.58mil|Location2.X=4980.94mil|Location1.Y=4625.36mil|Location2.Y=4744.72mil|Absolute=True">Hole Size Constraint (3mm &gt; 2.54mm) : Pad Free-0(125mm,119mm)  Multi-Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1908.824mil|Location2.X=2028.184mil|Location1.Y=4625.36mil|Location2.Y=4744.72mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1908.824mil|Location2.X=2028.184mil|Location1.Y=4625.36mil|Location2.Y=4744.72mil|Absolute=True">Hole Size Constraint (3mm &gt; 2.54mm) : Pad Free-0(50mm,119mm)  Multi-Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4861.58mil|Location2.X=4980.94mil|Location1.Y=3483.628mil|Location2.Y=3602.988mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4861.58mil|Location2.X=4980.94mil|Location1.Y=3483.628mil|Location2.Y=3602.988mil|Absolute=True">Hole Size Constraint (3mm &gt; 2.54mm) : Pad Free-0(125mm,90mm)  Multi-Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1908.824mil|Location2.X=2028.184mil|Location1.Y=3483.628mil|Location2.Y=3602.988mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1908.824mil|Location2.X=2028.184mil|Location1.Y=3483.628mil|Location2.Y=3602.988mil|Absolute=True">Hole Size Constraint (3mm &gt; 2.54mm) : Pad Free-0(50mm,90mm)  Multi-Layer</acronym></a><br></td>
+</tr>
+</table></a><a href="#top">Back to top</a><br><br><a name="IDAEEITD"><table>
+<tr>
+<th style="text-align : left" colspan="2" class="rule">Silkscreen Over Component Pads (Clearance=0.254mm) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2921.198mil|Location2.X=2992.19mil|Location1.Y=2668.047mil|Location2.Y=2739.039mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2921.198mil|Location2.X=2992.19mil|Location1.Y=2668.047mil|Location2.Y=2739.039mil|Absolute=True">Pad D3-1(75.1mm,68.67mm)  Multi-Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2857.205mil|Location2.X=3056.181mil|Location1.Y=2554.055mil|Location2.Y=2753.032mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2857.205mil|Location2.X=3056.181mil|Location1.Y=2554.055mil|Location2.Y=2753.032mil|Absolute=True">Arc (75.1mm,67.4mm)  Top Overlay</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2919.229mil|Location2.X=2994.158mil|Location1.Y=2566.078mil|Location2.Y=2641.007mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2919.229mil|Location2.X=2994.158mil|Location1.Y=2566.078mil|Location2.Y=2641.007mil|Absolute=True">Pad D3-2(75.1mm,66.13mm)  Multi-Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2857.205mil|Location2.X=3056.181mil|Location1.Y=2554.055mil|Location2.Y=2753.032mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2857.205mil|Location2.X=3056.181mil|Location1.Y=2554.055mil|Location2.Y=2753.032mil|Absolute=True">Arc (75.1mm,67.4mm)  Top Overlay</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2091.67mil|Location2.X=2162.662mil|Location1.Y=2641.67mil|Location2.Y=2712.662mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2091.67mil|Location2.X=2162.662mil|Location1.Y=2641.67mil|Location2.Y=2712.662mil|Absolute=True">Pad D2-1(54.03mm,68mm)  Multi-Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2077.677mil|Location2.X=2276.654mil|Location1.Y=2577.677mil|Location2.Y=2776.654mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2077.677mil|Location2.X=2276.654mil|Location1.Y=2577.677mil|Location2.Y=2776.654mil|Absolute=True">Arc (55.3mm,68mm)  Top Overlay</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2189.702mil|Location2.X=2264.631mil|Location1.Y=2639.702mil|Location2.Y=2714.631mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2189.702mil|Location2.X=2264.631mil|Location1.Y=2639.702mil|Location2.Y=2714.631mil|Absolute=True">Pad D2-2(56.57mm,68mm)  Multi-Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2077.677mil|Location2.X=2276.654mil|Location1.Y=2577.677mil|Location2.Y=2776.654mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2077.677mil|Location2.X=2276.654mil|Location1.Y=2577.677mil|Location2.Y=2776.654mil|Absolute=True">Arc (55.3mm,68mm)  Top Overlay</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3761.81mil|Location2.X=3769.684mil|Location1.Y=2592.127mil|Location2.Y=2848.425mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3761.81mil|Location2.X=3769.684mil|Location1.Y=2592.127mil|Location2.Y=2848.425mil|Absolute=True">Track (95.65mm,65.94mm)(95.65mm,72.25mm)  Top Overlay</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3764.109mil|Location2.X=3835.101mil|Location1.Y=2777.103mil|Location2.Y=2840.221mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3764.109mil|Location2.X=3835.101mil|Location1.Y=2777.103mil|Location2.Y=2840.221mil|Absolute=True">Pad SW1-3(96.51mm,71.34mm)  Top Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3513.386mil|Location2.X=3769.684mil|Location1.Y=2840.551mil|Location2.Y=2848.425mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3513.386mil|Location2.X=3769.684mil|Location1.Y=2840.551mil|Location2.Y=2848.425mil|Absolute=True">Track (89.34mm,72.25mm)(95.65mm,72.25mm)  Top Overlay</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3764.109mil|Location2.X=3835.101mil|Location1.Y=2777.103mil|Location2.Y=2840.221mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3764.109mil|Location2.X=3835.101mil|Location1.Y=2777.103mil|Location2.Y=2840.221mil|Absolute=True">Pad SW1-3(96.51mm,71.34mm)  Top Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3513.386mil|Location2.X=3521.26mil|Location1.Y=2592.127mil|Location2.Y=2848.425mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3513.386mil|Location2.X=3521.26mil|Location1.Y=2592.127mil|Location2.Y=2848.425mil|Absolute=True">Track (89.34mm,65.94mm)(89.34mm,72.25mm)  Top Overlay</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3448.755mil|Location2.X=3519.747mil|Location1.Y=2777.103mil|Location2.Y=2840.221mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3448.755mil|Location2.X=3519.747mil|Location1.Y=2777.103mil|Location2.Y=2840.221mil|Absolute=True">Pad SW1-4(88.5mm,71.34mm)  Top Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3513.386mil|Location2.X=3769.684mil|Location1.Y=2840.551mil|Location2.Y=2848.425mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3513.386mil|Location2.X=3769.684mil|Location1.Y=2840.551mil|Location2.Y=2848.425mil|Absolute=True">Track (89.34mm,72.25mm)(95.65mm,72.25mm)  Top Overlay</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3448.755mil|Location2.X=3519.747mil|Location1.Y=2777.103mil|Location2.Y=2840.221mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3448.755mil|Location2.X=3519.747mil|Location1.Y=2777.103mil|Location2.Y=2840.221mil|Absolute=True">Pad SW1-4(88.5mm,71.34mm)  Top Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3761.81mil|Location2.X=3769.684mil|Location1.Y=2592.127mil|Location2.Y=2848.425mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3761.81mil|Location2.X=3769.684mil|Location1.Y=2592.127mil|Location2.Y=2848.425mil|Absolute=True">Track (95.65mm,65.94mm)(95.65mm,72.25mm)  Top Overlay</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3764.109mil|Location2.X=3835.101mil|Location1.Y=2600.331mil|Location2.Y=2663.449mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3764.109mil|Location2.X=3835.101mil|Location1.Y=2600.331mil|Location2.Y=2663.449mil|Absolute=True">Pad SW1-1(96.51mm,66.85mm)  Top Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3513.386mil|Location2.X=3769.684mil|Location1.Y=2592.127mil|Location2.Y=2600.001mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3513.386mil|Location2.X=3769.684mil|Location1.Y=2592.127mil|Location2.Y=2600.001mil|Absolute=True">Track (89.34mm,65.94mm)(95.65mm,65.94mm)  Top Overlay</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3764.109mil|Location2.X=3835.101mil|Location1.Y=2600.331mil|Location2.Y=2663.449mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3764.109mil|Location2.X=3835.101mil|Location1.Y=2600.331mil|Location2.Y=2663.449mil|Absolute=True">Pad SW1-1(96.51mm,66.85mm)  Top Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3513.386mil|Location2.X=3521.26mil|Location1.Y=2592.127mil|Location2.Y=2848.425mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3513.386mil|Location2.X=3521.26mil|Location1.Y=2592.127mil|Location2.Y=2848.425mil|Absolute=True">Track (89.34mm,65.94mm)(89.34mm,72.25mm)  Top Overlay</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3448.755mil|Location2.X=3519.747mil|Location1.Y=2600.331mil|Location2.Y=2663.449mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3448.755mil|Location2.X=3519.747mil|Location1.Y=2600.331mil|Location2.Y=2663.449mil|Absolute=True">Pad SW1-2(88.5mm,66.85mm)  Top Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3513.386mil|Location2.X=3769.684mil|Location1.Y=2592.127mil|Location2.Y=2600.001mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3513.386mil|Location2.X=3769.684mil|Location1.Y=2592.127mil|Location2.Y=2600.001mil|Absolute=True">Track (89.34mm,65.94mm)(95.65mm,65.94mm)  Top Overlay</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3448.755mil|Location2.X=3519.747mil|Location1.Y=2600.331mil|Location2.Y=2663.449mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3448.755mil|Location2.X=3519.747mil|Location1.Y=2600.331mil|Location2.Y=2663.449mil|Absolute=True">Pad SW1-2(88.5mm,66.85mm)  Top Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4168.305mil|Location2.X=4176.179mil|Location1.Y=3404.529mil|Location2.Y=4058.071mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4168.305mil|Location2.X=4176.179mil|Location1.Y=3404.529mil|Location2.Y=4058.071mil|Absolute=True">Track (105.975mm,86.575mm)(105.975mm,102.975mm)  Top Overlay</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4180.054mil|Location2.X=4591.598mil|Location1.Y=3703.677mil|Location2.Y=4062.071mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4180.054mil|Location2.X=4591.598mil|Location1.Y=3703.677mil|Location2.Y=4062.071mil|Absolute=True">Pad U1-4(111.4mm,98.625mm)  Top Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4595.471mil|Location2.X=4603.345mil|Location1.Y=3404.529mil|Location2.Y=4058.071mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4595.471mil|Location2.X=4603.345mil|Location1.Y=3404.529mil|Location2.Y=4058.071mil|Absolute=True">Track (116.825mm,86.575mm)(116.825mm,102.975mm)  Top Overlay</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4180.054mil|Location2.X=4591.598mil|Location1.Y=3703.677mil|Location2.Y=4062.071mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4180.054mil|Location2.X=4591.598mil|Location1.Y=3703.677mil|Location2.Y=4062.071mil|Absolute=True">Pad U1-4(111.4mm,98.625mm)  Top Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4274.933mil|Location2.X=4343.633mil|Location1.Y=2774.798mil|Location2.Y=2823.898mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4274.933mil|Location2.X=4343.633mil|Location1.Y=2774.798mil|Location2.Y=2823.898mil|Absolute=True">Text "R15" (110.2mm,71.6mm)  Top Overlay</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4231.434mil|Location2.X=4311.874mil|Location1.Y=2732.184mil|Location2.Y=2789.396mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4231.434mil|Location2.X=4311.874mil|Location1.Y=2732.184mil|Location2.Y=2789.396mil|Absolute=True">Pad R15-2(108.5mm,70.124mm)  Top Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3068.026mil|Location2.X=3120.176mil|Location1.Y=4503.811mil|Location2.Y=4552.911mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3068.026mil|Location2.X=3120.176mil|Location1.Y=4503.811mil|Location2.Y=4552.911mil|Absolute=True">Text "C2" (79.124mm,114.524mm)  Top Overlay</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3018.836mil|Location2.X=3099.276mil|Location1.Y=4535.33mil|Location2.Y=4592.542mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3018.836mil|Location2.X=3099.276mil|Location1.Y=4535.33mil|Location2.Y=4592.542mil|Absolute=True">Pad R14-2(77.7mm,115.924mm)  Top Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2888.16mil|Location2.X=3027.168mil|Location1.Y=2555.009mil|Location2.Y=2565.009mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2888.16mil|Location2.X=3027.168mil|Location1.Y=2555.009mil|Location2.Y=2565.009mil|Absolute=True">Track (73.486mm,65.024mm)(76.763mm,65.024mm)  Top Overlay</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2919.229mil|Location2.X=2994.158mil|Location1.Y=2566.078mil|Location2.Y=2641.007mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2919.229mil|Location2.X=2994.158mil|Location1.Y=2566.078mil|Location2.Y=2641.007mil|Absolute=True">Pad D3-2(75.1mm,66.13mm)  Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2265.7mil|Location2.X=2275.7mil|Location1.Y=2608.63mil|Location2.Y=2747.64mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2265.7mil|Location2.X=2275.7mil|Location1.Y=2608.63mil|Location2.Y=2747.64mil|Absolute=True">Track (57.676mm,66.386mm)(57.676mm,69.663mm)  Top Overlay</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2189.702mil|Location2.X=2264.631mil|Location1.Y=2639.702mil|Location2.Y=2714.631mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2189.702mil|Location2.X=2264.631mil|Location1.Y=2639.702mil|Location2.Y=2714.631mil|Absolute=True">Pad D2-2(56.57mm,68mm)  Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2334.649mil|Location2.X=3736.223mil|Location1.Y=4257.873mil|Location2.Y=4265.747mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2334.649mil|Location2.X=3736.223mil|Location1.Y=4257.873mil|Location2.Y=4265.747mil|Absolute=True">Track (59.4mm,108.25mm)(94.8mm,108.25mm)  Top Overlay</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3547.972mil|Location2.X=3622.901mil|Location1.Y=4270.014mil|Location2.Y=4344.943mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3547.972mil|Location2.X=3622.901mil|Location1.Y=4270.014mil|Location2.Y=4344.943mil|Absolute=True">Pad U2-2(91.07mm,109.41mm)  Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2334.649mil|Location2.X=3736.223mil|Location1.Y=4257.873mil|Location2.Y=4265.747mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2334.649mil|Location2.X=3736.223mil|Location1.Y=4257.873mil|Location2.Y=4265.747mil|Absolute=True">Track (59.4mm,108.25mm)(94.8mm,108.25mm)  Top Overlay</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3447.972mil|Location2.X=3522.901mil|Location1.Y=4270.014mil|Location2.Y=4344.943mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3447.972mil|Location2.X=3522.901mil|Location1.Y=4270.014mil|Location2.Y=4344.943mil|Absolute=True">Pad U2-3(88.53mm,109.41mm)  Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2334.649mil|Location2.X=3736.223mil|Location1.Y=4257.873mil|Location2.Y=4265.747mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2334.649mil|Location2.X=3736.223mil|Location1.Y=4257.873mil|Location2.Y=4265.747mil|Absolute=True">Track (59.4mm,108.25mm)(94.8mm,108.25mm)  Top Overlay</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3347.972mil|Location2.X=3422.901mil|Location1.Y=4270.014mil|Location2.Y=4344.943mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3347.972mil|Location2.X=3422.901mil|Location1.Y=4270.014mil|Location2.Y=4344.943mil|Absolute=True">Pad U2-4(85.99mm,109.41mm)  Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2334.649mil|Location2.X=3736.223mil|Location1.Y=4257.873mil|Location2.Y=4265.747mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2334.649mil|Location2.X=3736.223mil|Location1.Y=4257.873mil|Location2.Y=4265.747mil|Absolute=True">Track (59.4mm,108.25mm)(94.8mm,108.25mm)  Top Overlay</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3247.972mil|Location2.X=3322.901mil|Location1.Y=4270.014mil|Location2.Y=4344.943mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3247.972mil|Location2.X=3322.901mil|Location1.Y=4270.014mil|Location2.Y=4344.943mil|Absolute=True">Pad U2-5(83.45mm,109.41mm)  Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2334.649mil|Location2.X=3736.223mil|Location1.Y=4257.873mil|Location2.Y=4265.747mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2334.649mil|Location2.X=3736.223mil|Location1.Y=4257.873mil|Location2.Y=4265.747mil|Absolute=True">Track (59.4mm,108.25mm)(94.8mm,108.25mm)  Top Overlay</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3147.972mil|Location2.X=3222.901mil|Location1.Y=4270.014mil|Location2.Y=4344.943mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3147.972mil|Location2.X=3222.901mil|Location1.Y=4270.014mil|Location2.Y=4344.943mil|Absolute=True">Pad U2-6(80.91mm,109.41mm)  Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2334.649mil|Location2.X=3736.223mil|Location1.Y=4257.873mil|Location2.Y=4265.747mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2334.649mil|Location2.X=3736.223mil|Location1.Y=4257.873mil|Location2.Y=4265.747mil|Absolute=True">Track (59.4mm,108.25mm)(94.8mm,108.25mm)  Top Overlay</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3047.972mil|Location2.X=3122.901mil|Location1.Y=4270.014mil|Location2.Y=4344.943mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3047.972mil|Location2.X=3122.901mil|Location1.Y=4270.014mil|Location2.Y=4344.943mil|Absolute=True">Pad U2-7(78.37mm,109.41mm)  Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2334.649mil|Location2.X=3736.223mil|Location1.Y=4257.873mil|Location2.Y=4265.747mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2334.649mil|Location2.X=3736.223mil|Location1.Y=4257.873mil|Location2.Y=4265.747mil|Absolute=True">Track (59.4mm,108.25mm)(94.8mm,108.25mm)  Top Overlay</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2947.972mil|Location2.X=3022.901mil|Location1.Y=4270.014mil|Location2.Y=4344.943mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2947.972mil|Location2.X=3022.901mil|Location1.Y=4270.014mil|Location2.Y=4344.943mil|Absolute=True">Pad U2-8(75.83mm,109.41mm)  Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2334.649mil|Location2.X=3736.223mil|Location1.Y=4257.873mil|Location2.Y=4265.747mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2334.649mil|Location2.X=3736.223mil|Location1.Y=4257.873mil|Location2.Y=4265.747mil|Absolute=True">Track (59.4mm,108.25mm)(94.8mm,108.25mm)  Top Overlay</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2847.972mil|Location2.X=2922.901mil|Location1.Y=4270.014mil|Location2.Y=4344.943mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2847.972mil|Location2.X=2922.901mil|Location1.Y=4270.014mil|Location2.Y=4344.943mil|Absolute=True">Pad U2-9(73.29mm,109.41mm)  Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2334.649mil|Location2.X=3736.223mil|Location1.Y=4257.873mil|Location2.Y=4265.747mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2334.649mil|Location2.X=3736.223mil|Location1.Y=4257.873mil|Location2.Y=4265.747mil|Absolute=True">Track (59.4mm,108.25mm)(94.8mm,108.25mm)  Top Overlay</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2747.972mil|Location2.X=2822.901mil|Location1.Y=4270.014mil|Location2.Y=4344.943mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2747.972mil|Location2.X=2822.901mil|Location1.Y=4270.014mil|Location2.Y=4344.943mil|Absolute=True">Pad U2-10(70.75mm,109.41mm)  Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2334.649mil|Location2.X=3736.223mil|Location1.Y=4257.873mil|Location2.Y=4265.747mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2334.649mil|Location2.X=3736.223mil|Location1.Y=4257.873mil|Location2.Y=4265.747mil|Absolute=True">Track (59.4mm,108.25mm)(94.8mm,108.25mm)  Top Overlay</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2647.972mil|Location2.X=2722.901mil|Location1.Y=4270.014mil|Location2.Y=4344.943mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2647.972mil|Location2.X=2722.901mil|Location1.Y=4270.014mil|Location2.Y=4344.943mil|Absolute=True">Pad U2-11(68.21mm,109.41mm)  Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2334.649mil|Location2.X=3736.223mil|Location1.Y=4257.873mil|Location2.Y=4265.747mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2334.649mil|Location2.X=3736.223mil|Location1.Y=4257.873mil|Location2.Y=4265.747mil|Absolute=True">Track (59.4mm,108.25mm)(94.8mm,108.25mm)  Top Overlay</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2547.972mil|Location2.X=2622.901mil|Location1.Y=4270.014mil|Location2.Y=4344.943mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2547.972mil|Location2.X=2622.901mil|Location1.Y=4270.014mil|Location2.Y=4344.943mil|Absolute=True">Pad U2-12(65.67mm,109.41mm)  Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2334.649mil|Location2.X=3736.223mil|Location1.Y=4257.873mil|Location2.Y=4265.747mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2334.649mil|Location2.X=3736.223mil|Location1.Y=4257.873mil|Location2.Y=4265.747mil|Absolute=True">Track (59.4mm,108.25mm)(94.8mm,108.25mm)  Top Overlay</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2447.972mil|Location2.X=2522.901mil|Location1.Y=4270.014mil|Location2.Y=4344.943mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2447.972mil|Location2.X=2522.901mil|Location1.Y=4270.014mil|Location2.Y=4344.943mil|Absolute=True">Pad U2-13(63.13mm,109.41mm)  Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2334.649mil|Location2.X=3736.223mil|Location1.Y=4257.873mil|Location2.Y=4265.747mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2334.649mil|Location2.X=3736.223mil|Location1.Y=4257.873mil|Location2.Y=4265.747mil|Absolute=True">Track (59.4mm,108.25mm)(94.8mm,108.25mm)  Top Overlay</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2347.972mil|Location2.X=2422.901mil|Location1.Y=4270.014mil|Location2.Y=4344.943mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2347.972mil|Location2.X=2422.901mil|Location1.Y=4270.014mil|Location2.Y=4344.943mil|Absolute=True">Pad U2-14(60.59mm,109.41mm)  Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2334.649mil|Location2.X=3736.223mil|Location1.Y=4049.211mil|Location2.Y=4057.085mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2334.649mil|Location2.X=3736.223mil|Location1.Y=4049.211mil|Location2.Y=4057.085mil|Absolute=True">Track (59.4mm,102.95mm)(94.8mm,102.95mm)  Top Overlay</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3647.972mil|Location2.X=3722.901mil|Location1.Y=3970.014mil|Location2.Y=4044.943mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3647.972mil|Location2.X=3722.901mil|Location1.Y=3970.014mil|Location2.Y=4044.943mil|Absolute=True">Pad U2-28(93.61mm,101.79mm)  Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2334.649mil|Location2.X=3736.223mil|Location1.Y=4049.211mil|Location2.Y=4057.085mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2334.649mil|Location2.X=3736.223mil|Location1.Y=4049.211mil|Location2.Y=4057.085mil|Absolute=True">Track (59.4mm,102.95mm)(94.8mm,102.95mm)  Top Overlay</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3547.972mil|Location2.X=3622.901mil|Location1.Y=3970.014mil|Location2.Y=4044.943mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3547.972mil|Location2.X=3622.901mil|Location1.Y=3970.014mil|Location2.Y=4044.943mil|Absolute=True">Pad U2-27(91.07mm,101.79mm)  Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2334.649mil|Location2.X=3736.223mil|Location1.Y=4049.211mil|Location2.Y=4057.085mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2334.649mil|Location2.X=3736.223mil|Location1.Y=4049.211mil|Location2.Y=4057.085mil|Absolute=True">Track (59.4mm,102.95mm)(94.8mm,102.95mm)  Top Overlay</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3447.972mil|Location2.X=3522.901mil|Location1.Y=3970.014mil|Location2.Y=4044.943mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3447.972mil|Location2.X=3522.901mil|Location1.Y=3970.014mil|Location2.Y=4044.943mil|Absolute=True">Pad U2-26(88.53mm,101.79mm)  Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2334.649mil|Location2.X=3736.223mil|Location1.Y=4049.211mil|Location2.Y=4057.085mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2334.649mil|Location2.X=3736.223mil|Location1.Y=4049.211mil|Location2.Y=4057.085mil|Absolute=True">Track (59.4mm,102.95mm)(94.8mm,102.95mm)  Top Overlay</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3347.972mil|Location2.X=3422.901mil|Location1.Y=3970.014mil|Location2.Y=4044.943mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3347.972mil|Location2.X=3422.901mil|Location1.Y=3970.014mil|Location2.Y=4044.943mil|Absolute=True">Pad U2-25(85.99mm,101.79mm)  Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2334.649mil|Location2.X=3736.223mil|Location1.Y=4049.211mil|Location2.Y=4057.085mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2334.649mil|Location2.X=3736.223mil|Location1.Y=4049.211mil|Location2.Y=4057.085mil|Absolute=True">Track (59.4mm,102.95mm)(94.8mm,102.95mm)  Top Overlay</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3247.972mil|Location2.X=3322.901mil|Location1.Y=3970.014mil|Location2.Y=4044.943mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3247.972mil|Location2.X=3322.901mil|Location1.Y=3970.014mil|Location2.Y=4044.943mil|Absolute=True">Pad U2-24(83.45mm,101.79mm)  Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2334.649mil|Location2.X=3736.223mil|Location1.Y=4049.211mil|Location2.Y=4057.085mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2334.649mil|Location2.X=3736.223mil|Location1.Y=4049.211mil|Location2.Y=4057.085mil|Absolute=True">Track (59.4mm,102.95mm)(94.8mm,102.95mm)  Top Overlay</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3147.972mil|Location2.X=3222.901mil|Location1.Y=3970.014mil|Location2.Y=4044.943mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3147.972mil|Location2.X=3222.901mil|Location1.Y=3970.014mil|Location2.Y=4044.943mil|Absolute=True">Pad U2-23(80.91mm,101.79mm)  Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2334.649mil|Location2.X=3736.223mil|Location1.Y=4049.211mil|Location2.Y=4057.085mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2334.649mil|Location2.X=3736.223mil|Location1.Y=4049.211mil|Location2.Y=4057.085mil|Absolute=True">Track (59.4mm,102.95mm)(94.8mm,102.95mm)  Top Overlay</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3047.972mil|Location2.X=3122.901mil|Location1.Y=3970.014mil|Location2.Y=4044.943mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3047.972mil|Location2.X=3122.901mil|Location1.Y=3970.014mil|Location2.Y=4044.943mil|Absolute=True">Pad U2-22(78.37mm,101.79mm)  Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2334.649mil|Location2.X=3736.223mil|Location1.Y=4049.211mil|Location2.Y=4057.085mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2334.649mil|Location2.X=3736.223mil|Location1.Y=4049.211mil|Location2.Y=4057.085mil|Absolute=True">Track (59.4mm,102.95mm)(94.8mm,102.95mm)  Top Overlay</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2947.972mil|Location2.X=3022.901mil|Location1.Y=3970.014mil|Location2.Y=4044.943mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2947.972mil|Location2.X=3022.901mil|Location1.Y=3970.014mil|Location2.Y=4044.943mil|Absolute=True">Pad U2-21(75.83mm,101.79mm)  Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2334.649mil|Location2.X=3736.223mil|Location1.Y=4049.211mil|Location2.Y=4057.085mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2334.649mil|Location2.X=3736.223mil|Location1.Y=4049.211mil|Location2.Y=4057.085mil|Absolute=True">Track (59.4mm,102.95mm)(94.8mm,102.95mm)  Top Overlay</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2847.972mil|Location2.X=2922.901mil|Location1.Y=3970.014mil|Location2.Y=4044.943mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2847.972mil|Location2.X=2922.901mil|Location1.Y=3970.014mil|Location2.Y=4044.943mil|Absolute=True">Pad U2-20(73.29mm,101.79mm)  Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2334.649mil|Location2.X=3736.223mil|Location1.Y=4049.211mil|Location2.Y=4057.085mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2334.649mil|Location2.X=3736.223mil|Location1.Y=4049.211mil|Location2.Y=4057.085mil|Absolute=True">Track (59.4mm,102.95mm)(94.8mm,102.95mm)  Top Overlay</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2747.972mil|Location2.X=2822.901mil|Location1.Y=3970.014mil|Location2.Y=4044.943mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2747.972mil|Location2.X=2822.901mil|Location1.Y=3970.014mil|Location2.Y=4044.943mil|Absolute=True">Pad U2-19(70.75mm,101.79mm)  Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2334.649mil|Location2.X=3736.223mil|Location1.Y=4049.211mil|Location2.Y=4057.085mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2334.649mil|Location2.X=3736.223mil|Location1.Y=4049.211mil|Location2.Y=4057.085mil|Absolute=True">Track (59.4mm,102.95mm)(94.8mm,102.95mm)  Top Overlay</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2647.972mil|Location2.X=2722.901mil|Location1.Y=3970.014mil|Location2.Y=4044.943mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2647.972mil|Location2.X=2722.901mil|Location1.Y=3970.014mil|Location2.Y=4044.943mil|Absolute=True">Pad U2-18(68.21mm,101.79mm)  Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2334.649mil|Location2.X=3736.223mil|Location1.Y=4049.211mil|Location2.Y=4057.085mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2334.649mil|Location2.X=3736.223mil|Location1.Y=4049.211mil|Location2.Y=4057.085mil|Absolute=True">Track (59.4mm,102.95mm)(94.8mm,102.95mm)  Top Overlay</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2547.972mil|Location2.X=2622.901mil|Location1.Y=3970.014mil|Location2.Y=4044.943mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2547.972mil|Location2.X=2622.901mil|Location1.Y=3970.014mil|Location2.Y=4044.943mil|Absolute=True">Pad U2-17(65.67mm,101.79mm)  Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2334.649mil|Location2.X=3736.223mil|Location1.Y=4049.211mil|Location2.Y=4057.085mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2334.649mil|Location2.X=3736.223mil|Location1.Y=4049.211mil|Location2.Y=4057.085mil|Absolute=True">Track (59.4mm,102.95mm)(94.8mm,102.95mm)  Top Overlay</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2447.972mil|Location2.X=2522.901mil|Location1.Y=3970.014mil|Location2.Y=4044.943mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2447.972mil|Location2.X=2522.901mil|Location1.Y=3970.014mil|Location2.Y=4044.943mil|Absolute=True">Pad U2-16(63.13mm,101.79mm)  Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2334.649mil|Location2.X=3736.223mil|Location1.Y=4049.211mil|Location2.Y=4057.085mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2334.649mil|Location2.X=3736.223mil|Location1.Y=4049.211mil|Location2.Y=4057.085mil|Absolute=True">Track (59.4mm,102.95mm)(94.8mm,102.95mm)  Top Overlay</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2347.972mil|Location2.X=2422.901mil|Location1.Y=3970.014mil|Location2.Y=4044.943mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2347.972mil|Location2.X=2422.901mil|Location1.Y=3970.014mil|Location2.Y=4044.943mil|Absolute=True">Pad U2-15(60.59mm,101.79mm)  Multi-Layer</acronym></a></td>
+</tr>
+</table></a><a href="#top">Back to top</a><br><br><a name="IDAFBJTD"><table>
+<tr>
+<th style="text-align : left" colspan="2" class="rule">Silk to Silk (Clearance=0.254mm) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2239.044mil|Location2.X=2293.744mil|Location1.Y=3617.047mil|Location2.Y=3666.147mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2239.044mil|Location2.X=2293.744mil|Location1.Y=3617.047mil|Location2.Y=3666.147mil|Absolute=True">Text "R8" (57mm,92mm)  Bottom Overlay</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2201.056mil|Location2.X=2321.024mil|Location1.Y=3584.488mil|Location2.Y=3664.469mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\arduino-project\avr-component-tester\trunk\hardware\ALT-AVR_TEST-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2201.056mil|Location2.X=2321.024mil|Location1.Y=3584.488mil|Location2.Y=3664.469mil|Absolute=True">Text "R7" (58.7mm,91.3mm)  Bottom Overlay</acronym></a></td>
+</tr>
+</table></a><a href="#top">Back to top</a><br><br></body>
+</html>

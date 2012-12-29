@@ -1,0 +1,7 @@
+Removed Pin From Net: NetName=GND Pin=POWER 1-1
+Removed Pin From Net: NetName=NetD1_1 Pin=POWER 1-2
+Removed Member From Class: ClassName=SHEET_AVR-TEST Member=POWER 1
+Change Component Comment : Designator=J1 Old Comment=CON2 New Comment=POWER9V
+Added Pin To Net: NetName=NetD1_1 Pin=J1-1
+Added Pin To Net: NetName=GND Pin=J1-2
+Added Member To Class: ClassName=SHEET_AVR-TEST Member=Component J1 POWER9V

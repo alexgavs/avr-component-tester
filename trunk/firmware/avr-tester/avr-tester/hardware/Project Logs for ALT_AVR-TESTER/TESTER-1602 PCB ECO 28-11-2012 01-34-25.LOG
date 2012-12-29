@@ -1,0 +1,4 @@
+Removed Pin From Net: NetName=GREEN_PROBES Pin=PROBES1-1
+Removed Pin From Net: NetName=YELLOW_PROBES Pin=PROBES1-3
+Added Pin To Net: NetName=YELLOW_PROBES Pin=PROBES1-1
+Added Pin To Net: NetName=GREEN_PROBES Pin=PROBES1-3

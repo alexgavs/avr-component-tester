@@ -1,0 +1,7 @@
+Removed Pin From Net: NetName=NetQ1_1 Pin=R6-2
+Added Component: Designator=R70(RC1206D)
+Added Pin To Net: NetName=NetQ1_1 Pin=R70-2
+Added Pin To Net: NetName=NetR6_2 Pin=R6-2
+Added Pin To Net: NetName=NetR6_2 Pin=R70-1
+Added Net: Name=NetR6_2
+Added Member To Class: ClassName=SHEET_AVR-TEST Member=Component R70 ERQF06

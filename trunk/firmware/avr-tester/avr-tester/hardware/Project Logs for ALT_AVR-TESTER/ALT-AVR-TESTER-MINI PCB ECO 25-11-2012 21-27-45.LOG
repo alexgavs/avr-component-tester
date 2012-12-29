@@ -1,0 +1,4 @@
+Added Component: Designator=U1(TO92)
+Added Pin To Net: NetName=NetQ1_3 Pin=U1-1
+Added Pin To Net: NetName=VCC Pin=U1-3
+Added Member To Class: ClassName=SHEET_AVR-TEST Member=Component U1 L7805CD2T

@@ -1,0 +1,4 @@
+Added Component: Designator=R7(RC1206D)
+Added Pin To Net: NetName=NetPROBES1_3 Pin=R7-1
+Added Pin To Net: NetName=NetR7_2 Pin=R7-2
+Added Member To Class: ClassName=SHEET_AVR-TEST Member=Component R7 ERQF06

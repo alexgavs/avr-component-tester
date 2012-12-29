@@ -1,0 +1,18 @@
+Removed Pin From Net: NetName=NetC1_2 Pin=D1-1
+Removed Pin From Net: NetName=NetD1_2 Pin=D1-2
+Change Component DesignItemId : Designator=D1 Old DesignItemId=BAT165 New DesignItemId=D Schottky
+Change Component Footprint: Designator=D1 Old Footprint=SOD-323 New Footprint=SMB
+Change Component Comment : Designator=D1 Old Comment=BAT165 New Comment=D Schottky
+Added Component: Designator=PB1(HDR1X3)
+Added Component: Designator=PC1(HDR1X3)
+Added Pin To Net: NetName=NetD1_2 Pin=D1-1
+Added Pin To Net: NetName=NetC1_2 Pin=D1-2
+Added Pin To Net: NetName=NetPB1_1 Pin=PB1-1
+Added Pin To Net: NetName=NetPB1_2 Pin=PB1-2
+Added Pin To Net: NetName=GND Pin=PB1-3
+Added Pin To Net: NetName=GND Pin=PC1-1
+Added Pin To Net: NetName=NetPC1_2 Pin=PC1-2
+Added Pin To Net: NetName=NetPC1_3 Pin=PC1-3
+Change Net Name : Old Net Name=NetD1_2 New Net Name=NetD1_1
+Added Member To Class: ClassName=SHEET_AVR-TEST Member=Component PB1 Header 3
+Added Member To Class: ClassName=SHEET_AVR-TEST Member=Component PC1 Header 3

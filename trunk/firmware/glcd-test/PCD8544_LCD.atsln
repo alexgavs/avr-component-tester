@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# AvrStudio Solution File, Format Version 11.00
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "PCD8544_LCD", "PCD8544_LCD.cproj", "{40496DF2-D02A-430D-962E-DA96F229793D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|AVR = Debug|AVR
+		Release|AVR = Release|AVR
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{40496DF2-D02A-430D-962E-DA96F229793D}.Debug|AVR.ActiveCfg = Debug|AVR
+		{40496DF2-D02A-430D-962E-DA96F229793D}.Debug|AVR.Build.0 = Debug|AVR
+		{40496DF2-D02A-430D-962E-DA96F229793D}.Release|AVR.ActiveCfg = Release|AVR
+		{40496DF2-D02A-430D-962E-DA96F229793D}.Release|AVR.Build.0 = Release|AVR
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

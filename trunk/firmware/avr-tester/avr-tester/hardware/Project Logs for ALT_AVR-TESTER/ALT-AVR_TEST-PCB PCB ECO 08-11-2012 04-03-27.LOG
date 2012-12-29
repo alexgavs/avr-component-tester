@@ -1,0 +1,13 @@
+Removed Pin From Net: NetName=NetPROBES1_1 Pin=R7-1
+Removed Pin From Net: NetName=NetPROBES1_1 Pin=R8-1
+Removed Pin From Net: NetName=NetPROBES1_2 Pin=R10-1
+Removed Pin From Net: NetName=NetPROBES1_2 Pin=R11-1
+Removed Pin From Net: NetName=NetPC1_3 Pin=R12-1
+Removed Pin From Net: NetName=NetPC1_3 Pin=R13-1
+Change Component Footprint: Designator=C2 Old Footprint=CAP_200RP New Footprint=C0805
+Added Pin To Net: NetName=NetPROBES1_3 Pin=R7-1
+Added Pin To Net: NetName=NetPROBES1_3 Pin=R8-1
+Added Pin To Net: NetName=NetPROBES1_1 Pin=R10-1
+Added Pin To Net: NetName=NetPROBES1_1 Pin=R11-1
+Added Pin To Net: NetName=NetPROBES1_2 Pin=R12-1
+Added Pin To Net: NetName=NetPROBES1_2 Pin=R13-1

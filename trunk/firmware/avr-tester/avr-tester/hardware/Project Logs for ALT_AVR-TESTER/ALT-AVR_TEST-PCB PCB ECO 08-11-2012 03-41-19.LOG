@@ -1,0 +1,7 @@
+Removed Pin From Net: NetName=GND Pin=R4-1
+Removed Pin From Net: NetName=VCC Pin=R4-2
+Change Component DesignItemId : Designator=R4 Old DesignItemId=Res Tap New DesignItemId=RPot
+Change Component Footprint: Designator=R4 Old Footprint=VR3 New Footprint=VR5
+Change Component Comment : Designator=R4 Old Comment=Res Tap New Comment=RPot
+Added Pin To Net: NetName=VCC Pin=R4-1
+Added Pin To Net: NetName=GND Pin=R4-2

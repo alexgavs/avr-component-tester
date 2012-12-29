@@ -1,0 +1,136 @@
+*************************************************************
+FileName = PRN_ALT-AVR-TESTER-MINI.PcbDoc
+ODB++ directory structure
+*************************************************************
+Generated File : D:\arduino-project\avr-component-tester\trunk\hardware\Project Outputs for ALT_AVR-TESTER\odb\matrix\matrix
+
+Generated File : D:\arduino-project\avr-component-tester\trunk\hardware\Project Outputs for ALT_AVR-TESTER\odb\steps\panel\profile
+
+Generated File : D:\arduino-project\avr-component-tester\trunk\hardware\Project Outputs for ALT_AVR-TESTER\odb\steps\panel\stephdr
+
+Generated File : D:\arduino-project\avr-component-tester\trunk\hardware\Project Outputs for ALT_AVR-TESTER\odb\steps\panel\attrlist
+
+Generated File : D:\arduino-project\avr-component-tester\trunk\hardware\Project Outputs for ALT_AVR-TESTER\odb\steps\panel\layers\topoverlay\features
+
+Generated File : D:\arduino-project\avr-component-tester\trunk\hardware\Project Outputs for ALT_AVR-TESTER\odb\steps\panel\layers\topoverlay\attrlist
+
+Generated File : D:\arduino-project\avr-component-tester\trunk\hardware\Project Outputs for ALT_AVR-TESTER\odb\steps\panel\layers\toppaste\features
+
+Generated File : D:\arduino-project\avr-component-tester\trunk\hardware\Project Outputs for ALT_AVR-TESTER\odb\steps\panel\layers\toppaste\attrlist
+
+Generated File : D:\arduino-project\avr-component-tester\trunk\hardware\Project Outputs for ALT_AVR-TESTER\odb\steps\panel\layers\topsolder\features
+
+Generated File : D:\arduino-project\avr-component-tester\trunk\hardware\Project Outputs for ALT_AVR-TESTER\odb\steps\panel\layers\topsolder\attrlist
+
+Generated File : D:\arduino-project\avr-component-tester\trunk\hardware\Project Outputs for ALT_AVR-TESTER\odb\steps\panel\layers\top\features
+
+Generated File : D:\arduino-project\avr-component-tester\trunk\hardware\Project Outputs for ALT_AVR-TESTER\odb\steps\panel\layers\top\attrlist
+
+Generated File : D:\arduino-project\avr-component-tester\trunk\hardware\Project Outputs for ALT_AVR-TESTER\odb\steps\panel\layers\bottom\features
+
+Generated File : D:\arduino-project\avr-component-tester\trunk\hardware\Project Outputs for ALT_AVR-TESTER\odb\steps\panel\layers\bottom\attrlist
+
+Generated File : D:\arduino-project\avr-component-tester\trunk\hardware\Project Outputs for ALT_AVR-TESTER\odb\steps\panel\layers\bottomsolder\features
+
+Generated File : D:\arduino-project\avr-component-tester\trunk\hardware\Project Outputs for ALT_AVR-TESTER\odb\steps\panel\layers\bottomsolder\attrlist
+
+Generated File : D:\arduino-project\avr-component-tester\trunk\hardware\Project Outputs for ALT_AVR-TESTER\odb\steps\panel\layers\bottompaste\features
+
+Generated File : D:\arduino-project\avr-component-tester\trunk\hardware\Project Outputs for ALT_AVR-TESTER\odb\steps\panel\layers\bottompaste\attrlist
+
+Generated File : D:\arduino-project\avr-component-tester\trunk\hardware\Project Outputs for ALT_AVR-TESTER\odb\steps\panel\layers\bottomoverlay\features
+
+Generated File : D:\arduino-project\avr-component-tester\trunk\hardware\Project Outputs for ALT_AVR-TESTER\odb\steps\panel\layers\bottomoverlay\attrlist
+
+Generated File : D:\arduino-project\avr-component-tester\trunk\hardware\Project Outputs for ALT_AVR-TESTER\odb\steps\panel\layers\drill\features
+
+Generated File : D:\arduino-project\avr-component-tester\trunk\hardware\Project Outputs for ALT_AVR-TESTER\odb\steps\panel\layers\drill\attrlist
+
+Generated File : D:\arduino-project\avr-component-tester\trunk\hardware\Project Outputs for ALT_AVR-TESTER\odb\steps\panel\layers\drill\tools
+
+Generated File : D:\arduino-project\avr-component-tester\trunk\hardware\Project Outputs for ALT_AVR-TESTER\odb\steps\panel\layers\keepout\features
+
+Generated File : D:\arduino-project\avr-component-tester\trunk\hardware\Project Outputs for ALT_AVR-TESTER\odb\steps\panel\layers\keepout\attrlist
+
+Generated File : D:\arduino-project\avr-component-tester\trunk\hardware\Project Outputs for ALT_AVR-TESTER\odb\steps\panel\layers\mechanical1\features
+
+Generated File : D:\arduino-project\avr-component-tester\trunk\hardware\Project Outputs for ALT_AVR-TESTER\odb\steps\panel\layers\mechanical1\attrlist
+
+Generated File : D:\arduino-project\avr-component-tester\trunk\hardware\Project Outputs for ALT_AVR-TESTER\odb\steps\panel\layers\mechanical13\features
+
+Generated File : D:\arduino-project\avr-component-tester\trunk\hardware\Project Outputs for ALT_AVR-TESTER\odb\steps\panel\layers\mechanical13\attrlist
+
+Generated File : D:\arduino-project\avr-component-tester\trunk\hardware\Project Outputs for ALT_AVR-TESTER\odb\steps\panel\layers\mechanical15\features
+
+Generated File : D:\arduino-project\avr-component-tester\trunk\hardware\Project Outputs for ALT_AVR-TESTER\odb\steps\panel\layers\mechanical15\attrlist
+
+Generated File : D:\arduino-project\avr-component-tester\trunk\hardware\Project Outputs for ALT_AVR-TESTER\odb\steps\pcb1\profile
+
+Generated File : D:\arduino-project\avr-component-tester\trunk\hardware\Project Outputs for ALT_AVR-TESTER\odb\steps\pcb1\stephdr
+
+Generated File : D:\arduino-project\avr-component-tester\trunk\hardware\Project Outputs for ALT_AVR-TESTER\odb\steps\pcb1\attrlist
+
+Generated File : D:\arduino-project\avr-component-tester\trunk\hardware\Project Outputs for ALT_AVR-TESTER\odb\steps\pcb1\layers\topoverlay\features
+
+Generated File : D:\arduino-project\avr-component-tester\trunk\hardware\Project Outputs for ALT_AVR-TESTER\odb\steps\pcb1\layers\topoverlay\attrlist
+
+Generated File : D:\arduino-project\avr-component-tester\trunk\hardware\Project Outputs for ALT_AVR-TESTER\odb\steps\pcb1\layers\toppaste\features
+
+Generated File : D:\arduino-project\avr-component-tester\trunk\hardware\Project Outputs for ALT_AVR-TESTER\odb\steps\pcb1\layers\toppaste\attrlist
+
+Generated File : D:\arduino-project\avr-component-tester\trunk\hardware\Project Outputs for ALT_AVR-TESTER\odb\steps\pcb1\layers\topsolder\features
+
+Generated File : D:\arduino-project\avr-component-tester\trunk\hardware\Project Outputs for ALT_AVR-TESTER\odb\steps\pcb1\layers\topsolder\attrlist
+
+Generated File : D:\arduino-project\avr-component-tester\trunk\hardware\Project Outputs for ALT_AVR-TESTER\odb\steps\pcb1\layers\top\features
+
+Generated File : D:\arduino-project\avr-component-tester\trunk\hardware\Project Outputs for ALT_AVR-TESTER\odb\steps\pcb1\layers\top\attrlist
+
+Generated File : D:\arduino-project\avr-component-tester\trunk\hardware\Project Outputs for ALT_AVR-TESTER\odb\steps\pcb1\layers\bottom\features
+
+Generated File : D:\arduino-project\avr-component-tester\trunk\hardware\Project Outputs for ALT_AVR-TESTER\odb\steps\pcb1\layers\bottom\attrlist
+
+Generated File : D:\arduino-project\avr-component-tester\trunk\hardware\Project Outputs for ALT_AVR-TESTER\odb\steps\pcb1\layers\bottomsolder\features
+
+Generated File : D:\arduino-project\avr-component-tester\trunk\hardware\Project Outputs for ALT_AVR-TESTER\odb\steps\pcb1\layers\bottomsolder\attrlist
+
+Generated File : D:\arduino-project\avr-component-tester\trunk\hardware\Project Outputs for ALT_AVR-TESTER\odb\steps\pcb1\layers\bottompaste\features
+
+Generated File : D:\arduino-project\avr-component-tester\trunk\hardware\Project Outputs for ALT_AVR-TESTER\odb\steps\pcb1\layers\bottompaste\attrlist
+
+Generated File : D:\arduino-project\avr-component-tester\trunk\hardware\Project Outputs for ALT_AVR-TESTER\odb\steps\pcb1\layers\bottomoverlay\features
+
+Generated File : D:\arduino-project\avr-component-tester\trunk\hardware\Project Outputs for ALT_AVR-TESTER\odb\steps\pcb1\layers\bottomoverlay\attrlist
+
+Generated File : D:\arduino-project\avr-component-tester\trunk\hardware\Project Outputs for ALT_AVR-TESTER\odb\steps\pcb1\layers\drill\features
+
+Generated File : D:\arduino-project\avr-component-tester\trunk\hardware\Project Outputs for ALT_AVR-TESTER\odb\steps\pcb1\layers\drill\attrlist
+
+Generated File : D:\arduino-project\avr-component-tester\trunk\hardware\Project Outputs for ALT_AVR-TESTER\odb\steps\pcb1\layers\drill\tools
+
+Generated File : D:\arduino-project\avr-component-tester\trunk\hardware\Project Outputs for ALT_AVR-TESTER\odb\steps\pcb1\layers\keepout\features
+
+Generated File : D:\arduino-project\avr-component-tester\trunk\hardware\Project Outputs for ALT_AVR-TESTER\odb\steps\pcb1\layers\keepout\attrlist
+
+Generated File : D:\arduino-project\avr-component-tester\trunk\hardware\Project Outputs for ALT_AVR-TESTER\odb\steps\pcb1\layers\mechanical1\features
+
+Generated File : D:\arduino-project\avr-component-tester\trunk\hardware\Project Outputs for ALT_AVR-TESTER\odb\steps\pcb1\layers\mechanical1\attrlist
+
+Generated File : D:\arduino-project\avr-component-tester\trunk\hardware\Project Outputs for ALT_AVR-TESTER\odb\steps\pcb1\layers\mechanical13\features
+
+Generated File : D:\arduino-project\avr-component-tester\trunk\hardware\Project Outputs for ALT_AVR-TESTER\odb\steps\pcb1\layers\mechanical13\attrlist
+
+Generated File : D:\arduino-project\avr-component-tester\trunk\hardware\Project Outputs for ALT_AVR-TESTER\odb\steps\pcb1\layers\mechanical15\features
+
+Generated File : D:\arduino-project\avr-component-tester\trunk\hardware\Project Outputs for ALT_AVR-TESTER\odb\steps\pcb1\layers\mechanical15\attrlist
+
+Generated File : D:\arduino-project\avr-component-tester\trunk\hardware\Project Outputs for ALT_AVR-TESTER\odb\steps\pcb1\layers\comp_+_top\features
+
+Generated File : D:\arduino-project\avr-component-tester\trunk\hardware\Project Outputs for ALT_AVR-TESTER\odb\steps\pcb1\layers\comp_+_top\components
+
+Generated File : D:\arduino-project\avr-component-tester\trunk\hardware\Project Outputs for ALT_AVR-TESTER\odb\steps\pcb1\layers\comp_+_bot\features
+
+Generated File : D:\arduino-project\avr-component-tester\trunk\hardware\Project Outputs for ALT_AVR-TESTER\odb\steps\pcb1\layers\comp_+_bot\components
+
+Generated File : D:\arduino-project\avr-component-tester\trunk\hardware\Project Outputs for ALT_AVR-TESTER\odb\steps\pcb1\eda\data
+

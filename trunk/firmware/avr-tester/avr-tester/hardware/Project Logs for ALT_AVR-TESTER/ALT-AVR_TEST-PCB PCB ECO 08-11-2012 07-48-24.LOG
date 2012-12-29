@@ -1,0 +1,24 @@
+Change Component Footprint: Designator=R3 Old Footprint=RC1206D New Footprint=6-0805
+Added Component: Designator=P1(918506x324)
+Added Component: Designator=PB1(HDR1X3)
+Added Component: Designator=PC1(HDR1X3)
+Added Component: Designator=UART1(HDR1X3)
+Added Pin To Net: NetName=NetP1_1 Pin=P1-1
+Added Pin To Net: NetName=VCC Pin=P1-2
+Added Pin To Net: NetName=NetP1_3 Pin=P1-3
+Added Pin To Net: NetName=NetP1_4 Pin=P1-4
+Added Pin To Net: NetName=NetP1_5 Pin=P1-5
+Added Pin To Net: NetName=GND Pin=P1-6
+Added Pin To Net: NetName=NetPB1_1 Pin=PB1-1
+Added Pin To Net: NetName=NetPB1_2 Pin=PB1-2
+Added Pin To Net: NetName=GND Pin=PB1-3
+Added Pin To Net: NetName=GND Pin=PC1-1
+Added Pin To Net: NetName=NetPC1_2 Pin=PC1-2
+Added Pin To Net: NetName=NetPC1_3 Pin=PC1-3
+Added Pin To Net: NetName=GND Pin=UART1-1
+Added Pin To Net: NetName=NetLCD1_11 Pin=UART1-2
+Added Pin To Net: NetName=NetLCD1_12 Pin=UART1-3
+Added Member To Class: ClassName=SHEET_AVR-TEST Member=Component P1 09 18 506 7324
+Added Member To Class: ClassName=SHEET_AVR-TEST Member=Component PB1 Header 3
+Added Member To Class: ClassName=SHEET_AVR-TEST Member=Component PC1 Header 3
+Added Member To Class: ClassName=SHEET_AVR-TEST Member=Component UART1 Header 3

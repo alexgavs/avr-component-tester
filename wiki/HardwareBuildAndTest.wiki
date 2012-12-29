@@ -1,0 +1,108 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>Describe in detail how to build and test board, and options
+
+<br>= Introduction =
+<br>
+Rough draft <br><br><br>
+<br>= Details =
+
+<br>decide which style headers.
+
+<br>decide which way the LCD goes
+<br>use the right m/f connector for it
+
+<br>which will be wired (probes, test switch, power)
+
+<br>what power source?
+
+<br>*ASSEMBLY ORDER*
+<br>precision r first.
+<br>only one value at a time.
+
+<br>rest of r
+<br>diode
+<br>i.c. socket
+<br>leds
+<br>small c
+<br>headers
+<br>reg
+<br>q
+<br>elect c
+
+
+<br>===================================PARTS===================================================
+<br>*BARE MINIMUM SYSTEM:*
+<br>1x2 2pin +5V IN header, from external +5V supply.
+<br>LCD
+<br>LCD connector - do NOT solder in LCD if you want to be able to add options.
+<br>CPU
+cpu socket
+<br>r1 precision for probe R1-R6
+<br>r1
+<br>r3
+<br>r4
+<br>r5
+<br>r6
+<br>c1 AREF decouple
+<br>c3 AVCC decouple
+<br>c6 +5v pwr filter
+<br>C5 +5v decouple
+<br>r13 pullup mclr
+<br>r11 contrast pot
+<br>1x3 3 pin header for probes, or wire directly
+
+------------------------------------------------------------
+<br>*BATTERY OPTION:* (makes it PORTABLE)
+<br>9V battery pigtail
+<br>r12 batt voltage sense divider
+<br>r21 batt voltage sense divider
+<br>d2  protection zener
+<br>ic2 5v regulator for internal +5V supply.
+<br>q3 9v switch
+<br>r10 bias
+<br>c4 filter
+<br>d1 input protection diode
+<br>r7
+<br>q1 keep-on-turn-off
+<br>led1 vdrop
+<br>r8 base limiter
+<br>c2 noise filter
+<br>r9 noise filter
+<br>9V pwr in header
+
+<br>------------------------------------------------------------
+<br>*POWER INDICATOR LED OPTION:*
+<br>r22 680r
+<br>pwr-led
+
+<br>------------------------------------------------------------
+<br>*I/O EXPANSION OPTION:*
+<br>3 pin header PB6-PB7
+<br>3 pin header PB3-PC4
+
+<br>------------------------------------------------------------
+<br>*UART OPTION:*
+<br>3 pin header UART
+
+<br>------------------------------------------------------------
+<br>*ISP OPTION:*
+<br>2x3 6 pin header
+
+------------------------------------------------------------
+<br>*5V OUT OPTION:*
+<br>1x2 2 pin header - also used as +5V IN if not using 9V battery

@@ -1,0 +1,60 @@
+CAMtasticDXP Aperture List
+Serial Number:  0000-00-00000
+
+
+Format:  2.5
+Zero Suppression:  Trailing
+Type:  Absolute
+UNITS: English (In.)
+     
+DCODE:		TYPE:			DIMENSIONS				ROTATE:
+----------------------------------------------------------------------------------------
+10		Round			0.0050
+11		Round			0.0098
+12		Round			0.0100
+13		Round			0.0079
+14		Round			0.0236
+17		Rectangle		0.0669:0.0433				0.0
+18		Rectangle Rounded	0.0724:0.0492:0.0123:15.0		0.0
+19		Rectangle Rounded	0.0492:0.0724:0.0123:15.0		0.0
+20		Rectangle		0.0512:0.0236				0.0
+21		Square			0.0906					0.0
+22		Rectangle		0.0591:0.0512				0.0
+23		Rectangle		0.0236:0.0512				0.0
+24		Rectangle		0.0630:0.0551				0.0
+25		Rectangle		0.0394:0.1339				0.0
+26		Rectangle		0.4035:0.3504				0.0
+27		Rectangle		0.0749:0.0513				0.0
+28		Rectangle Rounded	0.0804:0.0572:0.0163:15.0		0.0
+29		Rectangle Rounded	0.0572:0.0804:0.0163:15.0		0.0
+30		Rectangle		0.0592:0.0316				0.0
+31		Square			0.0986					0.0
+32		Rectangle		0.0671:0.0592				0.0
+33		Rectangle		0.0316:0.0592				0.0
+34		Rectangle		0.0710:0.0631				0.0
+35		Rectangle		0.0474:0.1419				0.0
+36		Rectangle		0.4115:0.3584				0.0
+37		Round			0.0680
+38		Round			0.0749
+39		Rectangle Rounded	0.0710:0.0710:0.0197:15.0		0.0
+40		Square			0.0671					0.0
+41		Square			0.0552					0.0
+42		Round			0.0315
+43		Round			0.0197
+44		Round			0.0060
+45		Round			0.0600
+46		Round			0.0669
+47		Rectangle Rounded	0.0630:0.0630:0.0157:15.0		0.0
+48		Square			0.0591					0.0
+49		Square			0.0472					0.0
+50		Rectangle		0.0433:0.0669				0.0
+51		Rectangle Rounded	0.0661:0.0528:0.0132:15.0		0.0
+52		Rectangle		0.0513:0.0749				0.0
+53		Rectangle Rounded	0.0741:0.0608:0.0172:15.0		0.0
+54		Round			0.0138
+55		Round			0.0010
+56		Round			0.0039
+9500		Round			0.0276
+9501		Round			0.0300
+9502		Round			0.0354
+9503		Round			0.1181

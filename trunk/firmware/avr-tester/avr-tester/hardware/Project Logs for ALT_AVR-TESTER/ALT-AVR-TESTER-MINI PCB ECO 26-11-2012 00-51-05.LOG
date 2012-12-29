@@ -1,0 +1,5 @@
+Added Component: Designator=U1(KC03)
+Added Pin To Net: NetName=NetQ1_3 Pin=U1-1
+Added Pin To Net: NetName=GND Pin=U1-2
+Added Pin To Net: NetName=VCC Pin=U1-3
+Added Member To Class: ClassName=SHEET_AVR-TEST Member=Component U1 µA7805CKC

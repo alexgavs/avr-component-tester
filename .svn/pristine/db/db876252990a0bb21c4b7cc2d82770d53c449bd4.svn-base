@@ -1,0 +1,94 @@
+<BR>Edited partlist exported from Eagle
+<BR>
+<BR>
+<BR>9V-DC-IN                     1X02          
+<BR>GND                          1X02         
+<BR>PB6-PB7                      1X03                 
+<BR>PC3-PC4                      1X03                  
+<BR>PROBES                       1X03         
+<BR>TEST-SWITCH                  1X02                      
+<BR>UART                         1X03                 
+<BR>VCC-GND                      1X02          - 20 pins total
+<BR>
+<BR>LCD    ------------------- 1X16          dont forget the LCD, male default, pcbs, back to back.
+<BR>
+<BR>ISP                          2X03         
+<BR>
+<BR>C1          100n                          
+<BR>C2          100n                            
+<BR>C3          100n                         
+<BR>C4          100n                       
+<BR>C5          100n         5 total
+<BR>                  
+<BR>C6          100uF         
+<BR>                  
+<BR>D1          1N5817-B                  
+<BR>D2          5V1                    
+<BR>               
+<BR>IC1         MEGA328-P            
+<BR>IC2         7805L          v-reg  looks like a TO-92 transistor                
+<BR>               
+<BR>LCDHD44870  16x02 Character LCD Display
+<BR>            
+<BR>LED1        LED         MUST NOT BE RED !!! Green is OK                 
+<BR>PWR         LED         Colour unimportant
+<BR>                   
+<BR>Q1          BC547          
+<BR>Q2          BC547          
+<BR> 
+<BR>Q3          BC557         
+<BR>        
+<BR>R1          680R          NOTE: 1% or better tolerance.
+<BR>R3          680R          NOTE: 1% or better tolerance.
+<BR>R5          680R          NOTE: 1% or better tolerance. 3 total
+<BR>               
+<BR>R2          470K          NOTE: 1% or better tolerance.             
+<BR>R4          470K          NOTE: 1% or better tolerance.                 
+<BR>R6          470K          NOTE: 1% or better tolerance. 3 total
+ <BR>
+<BR>
+    
+<BR>*All Below are 5% 1/4 W carbon*
+<BR>
+<BR>R7          27k                                
+<BR>R8          27K           2 total
+<BR>                   
+<BR>R9          100K           
+<BR>                    
+<BR>R10         33K            
+<BR>                     
+<BR>R11         10K                            
+<BR>R12         10K                             
+<BR>R13         10K            3 total
+<BR>                    
+<BR>R15         150R          
+<BR>                     
+<BR>R21         3K3            
+<BR>                     
+<BR>R22         680R                          
+<BR>             
+<BR>*-----------------------------------------------------------------------------------------*
+<BR>*Shopping List:*
+<BR><BR>Headers 1X36
+<BR>Headers 2x3
+<BR>
+<BR>0.1uF x 5
+<BR>
+<BR>100uF
+<BR>1N5817
+<BR>5V1 Zener
+<BR>Mega328P
+<BR>7805L
+<BR>16x02 LCD Display
+<BR>LED x 2 one must be Green
+<BR>BC547 X 2
+<BR>BC557
+<BR>680R 1% x 3
+<BR>470k 1% x 3 
+<BR>27K x 2
+<BR>100K
+<BR>33K
+<BR>10K x 3
+<BR>150R
+<BR>3K3
+<BR>680R

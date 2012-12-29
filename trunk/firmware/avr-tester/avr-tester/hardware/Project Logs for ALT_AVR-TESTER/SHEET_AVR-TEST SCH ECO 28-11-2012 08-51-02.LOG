@@ -1,0 +1,10 @@
+Change Component Footprint: Designator=U1 Old Footprint=KC03 New Footprint=TO-92
+Change Component Footprint: Designator=R1 Old Footprint=RC1206D New Footprint=R0805
+Change Component Footprint: Designator=R3 Old Footprint=RC1206D New Footprint=R0805
+Change Component Footprint: Designator=R5 Old Footprint=RC1206D New Footprint=r0805
+Change Component Footprint: Designator=R6 Old Footprint=RC1206D New Footprint=R0805
+Change Component Footprint: Designator=R16 Old Footprint=RC1206D New Footprint=R0805
+Change Component Footprint: Designator=R17 Old Footprint=RC1206D New Footprint=R0805
+Change Component Footprint: Designator=R2 Old Footprint=RC1206D New Footprint=RC0805DS
+Change Pin Designator/Name:  Old Designator=PROBES1-1 Old Name=3 New Designator =1 New Name=3
+Change Pin Designator/Name:  Old Designator=PROBES1-3 Old Name=1 New Designator =3 New Name=1
